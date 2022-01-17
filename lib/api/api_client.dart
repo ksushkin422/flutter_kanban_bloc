@@ -17,7 +17,7 @@ class ApiClient{
   }
 
   Future apiAuth(String username, String password) async {
-    final String url = '${basePath}/users/login/?$username:$password';
+    final String url = '${basePath}/users/login/';
     Dio _dio = getDio();
     _dio.options = BaseOptions(
         headers: {
@@ -32,20 +32,19 @@ class ApiClient{
     });
     return await _dio.post(url, data: formData);
   }
-
-  Future apiCards() async {
-    final String url = '${basePath}/cards/';
-    Dio _dio = getDio();
-    return await _dio.get(url, options: Options(
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'JWT ${preferences.token}',
-        'username': 'armada',
-        'password': 'FSH6zBZ0p9yH'
-      },
-    ),);
-  }
+  //
+  // Future apiCards() async {
+  //   final String url = '${basePath}/cards/';
+  //   Dio _dio = getDio();
+  //   return await _dio.get(url, options: Options(
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': 'JWT ${preferences.token}'
+  //
+  //     },
+  //   ),);
+  // }
 
   Future<CardResponse> apiCardsGet() async {
     final String url = '${basePath}/cards/';
